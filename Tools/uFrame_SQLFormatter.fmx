@@ -406,12 +406,32 @@ object Frame_SQLFormatter: TFrame_SQLFormatter
             TabOrder = 5
           end
         end
+        object chkFormatToDelphi: TCheckBox
+          Position.X = 64.000000000000000000
+          Position.Y = 9.000000000000000000
+          Size.Width = 168.000000000000000000
+          Size.Height = 19.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'Format To Delphi-VarName'
+        end
+        object edtVarName: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 6
+          Text = 'sql'
+          Position.X = 240.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 57.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+        end
       end
       object memOutput: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
         ReadOnly = True
-        TextSettings.WordWrap = True
+        StyledSettings = [Size, Style, FontColor]
+        TextSettings.Font.Family = 'Courier New'
         Align = Client
         Size.Width = 375.000000000000000000
         Size.Height = 543.000000000000000000

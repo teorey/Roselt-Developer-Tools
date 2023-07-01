@@ -24,7 +24,7 @@ uses
   FMX.Layouts,
   Roselt.CodeFormatting,
   Skia,
-  Skia.FMX;
+  Skia.FMX, FMX.Edit;
 
 type
   TFrame_SQLFormatter = class(TFrame)
@@ -60,6 +60,8 @@ type
     btnInputClear: TButton;
     imgInputClear: TSkSvg;
     lblInputClear: TLabel;
+    chkFormatToDelphi: TCheckBox;
+    edtVarName: TEdit;
     procedure FrameResize(Sender: TObject);
     procedure btnOutputCopyToClipboardClick(Sender: TObject);
     procedure btnInputCopyToClipboardClick(Sender: TObject);
@@ -111,8 +113,18 @@ begin
 end;
 
 Procedure TFrame_SQLFormatter.SQLFormat;
+var sResult:string;
+lstResult:TStringList;
 begin
-  memOutput.Text := FormatSQL(memInput.Text);
+  lstResult := TStringList.Create;
+  lstResult := FormatSQL(memInput.Text, chkFormatToDelphi.IsChecked, edtVarName.Text);
+
+  memOutput.Lines.Clear;
+  for var s in lstResult do
+  begin
+    memOutput.Lines.Add(s);
+  end;
+  
 end;
 
 end.
