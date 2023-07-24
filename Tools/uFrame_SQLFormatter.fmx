@@ -251,6 +251,10 @@ object Frame_SQLFormatter: TFrame_SQLFormatter
           Size.Height = 34.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 8
+<<<<<<< HEAD
+=======
+          OnClick = btnInputLoadClick
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
           object imgInputLoad: TSkSvg
             Align = Left
             Margins.Left = 5.000000000000000000
@@ -291,6 +295,10 @@ object Frame_SQLFormatter: TFrame_SQLFormatter
           Size.Height = 34.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
+<<<<<<< HEAD
+=======
+          OnClick = btnInputClearClick
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
           object imgInputClear: TSkSvg
             Align = Left
             Margins.Left = 5.000000000000000000
@@ -333,13 +341,20 @@ object Frame_SQLFormatter: TFrame_SQLFormatter
             '-2018'#39' AND '#39'27/07/2018 0:00:00'#39' ORDER BY id_cuenta,fecha,CASE id' +
             '_concepto WHEN 7 THEN -1  ELSE 0 END , id_asiento')
         TextSettings.WordWrap = True
+        OnChange = memInputChange
         Align = Client
         Size.Width = 380.000000000000000000
         Size.Height = 543.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
+<<<<<<< HEAD
         Viewport.Width = 376.000000000000000000
         Viewport.Height = 539.000000000000000000
+=======
+        OnKeyUp = memInputKeyUp
+        Viewport.Width = 380.000000000000000000
+        Viewport.Height = 543.000000000000000000
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
         object OpenDialog: TOpenDialog
           Filter = 'All Files|*|*.txt|*.txt|*.sql|*.sql'
           Left = 320

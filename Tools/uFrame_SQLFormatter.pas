@@ -22,7 +22,13 @@ uses
   FMX.Memo,
   FMX.Controls.Presentation,
   FMX.Layouts,
+<<<<<<< HEAD
   Roselt.CodeFormatting,
+=======
+
+  Roselt.CodeFormatting,
+
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
   Skia,
   Skia.FMX, FMX.Edit;
 
@@ -66,7 +72,15 @@ type
     procedure btnOutputCopyToClipboardClick(Sender: TObject);
     procedure btnInputCopyToClipboardClick(Sender: TObject);
     procedure btnInputPasteFromClipboardClick(Sender: TObject);
+<<<<<<< HEAD
     procedure memOutputEnter(Sender: TObject);
+=======
+    procedure btnInputLoadClick(Sender: TObject);
+    procedure btnInputClearClick(Sender: TObject);
+    procedure memInputChange(Sender: TObject);
+    procedure memInputKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
   private
     { Private declarations }
     procedure SQLFormat();
@@ -78,12 +92,27 @@ implementation
 
 {$R *.fmx}
 
+procedure TFrame_SQLFormatter.btnInputClearClick(Sender: TObject);
+begin
+  memInput.Lines.Clear;
+  SQLFormat();
+end;
+
 procedure TFrame_SQLFormatter.btnInputCopyToClipboardClick(Sender: TObject);
 var
   ClipboardService: IFMXClipboardService;
 begin
   if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, ClipboardService) then
     ClipboardService.SetClipboard(memInput.Text);
+end;
+
+procedure TFrame_SQLFormatter.btnInputLoadClick(Sender: TObject);
+begin
+  if (OpenDialog.Execute) then
+  begin
+    memInput.Lines.LoadFromFile(OpenDialog.FileName);
+    SQLFormat();
+  end;
 end;
 
 procedure TFrame_SQLFormatter.btnInputPasteFromClipboardClick(Sender: TObject);
@@ -107,11 +136,16 @@ begin
   layInput.Width := (layBottom.Width - layBottom.Padding.Left - layBottom.Padding.Right - SplitterInputOutput.Width) / 2;
 end;
 
+<<<<<<< HEAD
 procedure TFrame_SQLFormatter.memOutputEnter(Sender: TObject);
+=======
+procedure TFrame_SQLFormatter.memInputChange(Sender: TObject);
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
 begin
   SQLFormat();
 end;
 
+<<<<<<< HEAD
 Procedure TFrame_SQLFormatter.SQLFormat;
 var sResult:string;
 lstResult:TStringList;
@@ -125,6 +159,17 @@ begin
     memOutput.Lines.Add(s);
   end;
   
+=======
+procedure TFrame_SQLFormatter.memInputKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  SQLFormat();
+end;
+
+procedure TFrame_SQLFormatter.SQLFormat;
+begin
+  memOutput.Text := TCodeFormatter.FormatSQL(memInput.Text);
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
 end;
 
 end.

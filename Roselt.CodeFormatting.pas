@@ -8,6 +8,7 @@ uses
   System.Classes,
   System.StrUtils;
 
+<<<<<<< HEAD
 
 //type
 //  THTMLAttribute = record
@@ -30,25 +31,55 @@ function FormatSQL(sql: String; InFormatToDelphi:Boolean; varName:string): TStri
 function FormatSQLByWord(sql: String; sWord:string): String;
 function Occurrences(const Substring, Text: string): integer;
 function ReturnPositionsOfAString(const SubStr, s: string): TStringList;
+=======
+type
+  TCodeFormatter = record
+  public type
+    TIndentationType = (Spaces, Tabs);
+    TIdentationCount = 0..8;
+  public
+    class function FormatDelphi(delphi: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatHTML(html: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatCSS(css: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatSQL(sql: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatJavaScript(js: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatXML(xml: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatPHP(php: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+    class function FormatJson(delphi: String; IndentationType: TIndentationType = TIndentationType.Spaces; IndentationCount: TIdentationCount = 2): String; static;
+  end;
+>>>>>>> 53af526825e1211c7a56f7bad6746d4fce3f4c60
 
 implementation
 const
  CRLF = #13#10;
 
-function FormatDelphi(delphi: String): String;
+class function TCodeFormatter.FormatDelphi(delphi: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
 begin
 
 end;
 
-function FormatHTML(html: String): String;
+class function TCodeFormatter.FormatSQL(sql: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
+begin
+
+end;
+
+class function TCodeFormatter.FormatXML(xml: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
+begin
+
+end;
+
+class function TCodeFormatter.FormatHTML(html: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
 //  Doesn't work yet. Just testing things out.
 begin
   html := RemoveEmptyLinesAndWhitespace(html);
-  html := html.Replace(#10,'',[rfReplaceAll]).Replace(#13,'',[rfReplaceAll]); 
+  html := html.Replace(#10,'',[rfReplaceAll]).Replace(#13,'',[rfReplaceAll]);
 
 
-  html := html.Replace('>','>'+sLineBreak);   
-  html := html.Replace('<',sLineBreak+'<'); 
+  html := html.Replace('>','>'+sLineBreak);
+  html := html.Replace('<',sLineBreak+'<');
   html := RemoveEmptyLinesAndWhitespace(html);
 
 
@@ -66,19 +97,33 @@ begin
     end;
 
     var fsf := '';
-    
+
   end;
-           
+
   Result := SL.Text;
   SL.Free;
 end;
 
-function FormatCSS(css: String): String;
+class function TCodeFormatter.FormatCSS(css: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
 begin
 
 end;
 
-function FormatJavaScript(js: String): String;
+class function TCodeFormatter.FormatJavaScript(js: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
+begin
+
+end;
+
+class function TCodeFormatter.FormatJson(delphi: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
+begin
+
+end;
+
+class function TCodeFormatter.FormatPHP(php: String; IndentationType: TIndentationType; IndentationCount: TIdentationCount): String;
+//  Doesn't work yet. Just testing things out.
 begin
 
 end;
